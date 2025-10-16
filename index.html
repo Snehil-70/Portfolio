@@ -7,30 +7,134 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/scrollreveal"></script>
+  <style>
+    /* ==== NAVBAR STYLES ==== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(79, 70, 229, 0.8);
+      backdrop-filter: blur(12px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      color: white;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: white;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: white;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* ==== MOBILE MENU ==== */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    /* ==== MOBILE NAV ==== */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        background: rgba(79, 70, 229, 0.95);
+        flex-direction: column;
+        width: 200px;
+        height: 100vh;
+        align-items: center;
+        justify-content: start;
+        padding-top: 50px;
+        transition: right 0.3s ease;
+      }
+
+      .nav-links.open {
+        right: 0;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    /* Push content below navbar */
+    header, section, footer {
+      scroll-margin-top: 100px;
+    }
+  </style>
 </head>
 <body>
 
   <!-- ===== NAVBAR ===== -->
   <nav class="navbar">
-    <div class="container nav-content">
-      <h2 class="logo">Snehil Singh</h2>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button id="theme-toggle" class="btn small">🌙</button>
+    <div class="logo">Snehil Singh</div>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="menu-toggle" id="menu-toggle">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
     </div>
   </nav>
 
-  <!-- ===== HERO SECTION ===== -->
+  <!-- ===== HERO ===== -->
   <header class="hero">
     <div class="container hero-content">
       <h1>Hi, I'm <span class="highlight">Snehil Singh</span></h1>
       <p class="typing"></p>
-      <a href="#projects" class="btn">View My Projects</a>
+      <a href="#projects" class="btn">View My Work</a>
     </div>
   </header>
 
@@ -38,10 +142,9 @@
   <section id="about" class="about container">
     <h2>About Me</h2>
     <p>
-      I'm <b>Snehil Singh</b>, a <b>Computer Science Engineering student</b> at 
-      <b>Invertis University, Bareilly</b> (2023–2027). Passionate about crafting clean, efficient, 
-      and user-friendly web interfaces, I enjoy transforming creative ideas into digital experiences. 
-      I’m also focused on improving my skills in <b>Java</b> and <b>DSA</b>.
+      I'm <b>Snehil Singh</b>, a passionate <b>Computer Science Engineering student</b> at 
+      <b>Invertis University, Bareilly</b> (2023–2027). 
+      I specialize in <b>frontend development</b> and am improving my <b>Java</b> & <b>DSA</b> skills.
     </p>
   </section>
 
@@ -51,22 +154,22 @@
     <div class="project-grid">
       <div class="card">
         <h3>Signup Page</h3>
-        <p>Responsive signup page built using HTML, CSS & JS.</p>
+        <p>Responsive signup form built using HTML, CSS & JS.</p>
         <a href="https://snehil-70.github.io/Signup/" target="_blank" class="btn small">View</a>
       </div>
       <div class="card">
         <h3>Rock Paper Scissors Game</h3>
-        <p>Interactive game using DOM manipulation & animations.</p>
+        <p>Interactive browser game using DOM and logic.</p>
         <a href="https://snehil-70.github.io/Rock/" target="_blank" class="btn small">Play</a>
       </div>
       <div class="card">
         <h3>Todo App</h3>
-        <p>LocalStorage-based app for managing tasks efficiently.</p>
+        <p>Simple task manager using Local Storage.</p>
         <a href="https://snehil-70.github.io/Todo/" target="_blank" class="btn small">Open</a>
       </div>
       <div class="card">
         <h3>Pet Simulator System</h3>
-        <p>Java-based console project demonstrating all OOP concepts.</p>
+        <p>Java-based OOP project simulating pet care logic.</p>
         <a href="https://github.com/Snehil-70/Pet-Simulator-System" target="_blank" class="btn small">Code</a>
       </div>
     </div>
@@ -76,15 +179,8 @@
   <section id="skills" class="skills container">
     <h2>Skills</h2>
     <div class="skills-grid">
-      <span>HTML</span>
-      <span>CSS</span>
-      <span>JavaScript</span>
-      <span>Java</span>
-      <span>Python</span>
-      <span>C</span>
-      <span>React (Learning)</span>
-      <span>Git & GitHub</span>
-      <span>DSA (Learning)</span>
+      <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Java</span>
+      <span>Python</span><span>C</span><span>React (Learning)</span><span>Git & GitHub</span><span>DSA (Learning)</span>
     </div>
   </section>
 
@@ -93,13 +189,12 @@
     <h2>Education</h2>
     <p><b>Invertis University, Bareilly</b></p>
     <p>B.Tech in Computer Science & Engineering (2023–2027)</p>
-    <p>Current Year: 3rd | CGPA: 7.5+ / 10</p>
+    <p>Current Year: 3rd | CGPA: 7.4 / 10</p>
   </section>
 
   <!-- ===== CONTACT ===== -->
   <section id="contact" class="contact container">
     <h2>Contact</h2>
-    <p>Let's connect and build something amazing together!</p>
     <p><b>Email:</b> <a href="mailto:snehilsingh9412@gmail.com">snehilsingh9412@gmail.com</a></p>
     <p><b>GitHub:</b> <a href="https://github.com/Snehil-70" target="_blank">github.com/Snehil-70</a></p>
   </section>
@@ -113,20 +208,53 @@
 
   <!-- ===== JAVASCRIPT ===== -->
   <script>
+    // Hamburger menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      menuToggle.classList.toggle('open');
+    });
+
+    // Smooth scrolling & active link highlight
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: 'smooth'
+        });
+        navLinks.classList.remove('open'); // close menu on mobile
+      });
+    });
+
+    // Active section highlight
+    window.addEventListener('scroll', () => {
+      let fromTop = window.scrollY + 100;
+      links.forEach(link => {
+        const section = document.querySelector(link.getAttribute('href'));
+        if (section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    });
+
     // Typing effect
     const typingText = document.querySelector(".typing");
     const phrases = ["Frontend Developer", "Java Enthusiast", "Tech Learner", "Creative Thinker"];
-    let i = 0, j = 0, current = "", isDeleting = false;
-
+    let i = 0, j = 0, isDeleting = false;
     function typeEffect() {
-      current = phrases[i];
+      const current = phrases[i];
       typingText.textContent = isDeleting
         ? current.substring(0, j--)
         : current.substring(0, j++);
-
       if (!isDeleting && j === current.length + 1) {
         isDeleting = true;
-        setTimeout(typeEffect, 1200);
+        setTimeout(typeEffect, 1000);
       } else if (isDeleting && j === 0) {
         isDeleting = false;
         i = (i + 1) % phrases.length;
@@ -137,7 +265,7 @@
     }
     typeEffect();
 
-    // Scroll Reveal animations
+    // Scroll reveal
     ScrollReveal().reveal('section', {
       delay: 100,
       distance: '50px',
@@ -146,15 +274,7 @@
       easing: 'ease-in-out',
       reset: true
     });
-
-    // Dark/Light Mode toggle
-    const toggle = document.getElementById('theme-toggle');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      toggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-    });
   </script>
 
 </body>
 </html>
-
