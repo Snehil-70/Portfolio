@@ -102,9 +102,74 @@
       }
     }
 
-    /* Push content below navbar */
+    /* ==== GENERAL ==== */
     header, section, footer {
       scroll-margin-top: 100px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #4f46e5;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p, span, a {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* ==== CERTIFICATION ==== */
+    .certifications {
+      text-align: center;
+    }
+
+    .certifications a {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #4f46e5;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .certifications a:hover {
+      background: #3730a3;
+    }
+
+    /* ==== FOOTER ==== */
+    footer {
+      background: #4f46e5;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #4f46e5;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .btn.small {
+      padding: 6px 14px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -119,6 +184,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
 
@@ -192,6 +258,15 @@
     <p>Current Year: 3rd | CGPA: 7.4 / 10</p>
   </section>
 
+  <!-- ===== CERTIFICATIONS ===== -->
+  <section id="certifications" class="certifications container">
+    <h2>Certifications</h2>
+    <p>View my verified certification here:</p>
+    <a href="https://lmsapi.eduskillsfoundation.org/certificates/certificate_739703_785427.html" target="_blank">
+      View Certificate
+    </a>
+  </section>
+
   <!-- ===== CONTACT ===== -->
   <section id="contact" class="contact container">
     <h2>Contact</h2>
@@ -226,7 +301,7 @@
           top: target.offsetTop - 80,
           behavior: 'smooth'
         });
-        navLinks.classList.remove('open'); // close menu on mobile
+        navLinks.classList.remove('open');
       });
     });
 
